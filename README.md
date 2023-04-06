@@ -19,14 +19,14 @@ Triginometry provides simple trig equations, this is a pretty lackluster class.
 Graph provides mainly algebraic formulas (aside from Integrals) and their paths.
 
 ## How to Use
-For those who don't know Jupyter you must run all the cells first in order (similar to Google Collab).
-In a new cell we'll use Areas as an example, and we'll find the area of a Square:
-  First we'll make an object from our class as well as define the parameters:
-    area = Areas(2, 4)
-   And now we have our object using 2 for our first input and 4 for our second input (which is useless for Square)
-   So now we call the square function:
-    area.square()
-   And our answer is 4
-   You can also set Areas second parameter to None if you're only using Square but that is not encouraged
+\n For those who don't know Jupyter you must run all the cells first in order (similar to Google Collab).
+\n In a new cell we'll use Areas as an example, and we'll find the area of a Square:
+  \nFirst we'll make an object from our class as well as define the parameters:
+    \narea = Areas(2, 4)
+   \nAnd now we have our object using 2 for our first input and 4 for our second input (which is useless for Square)
+   \nSo now we call the square function:
+    \narea.square()
+   \nAnd our answer is 4
+   \nYou can also set Areas second parameter to None if you're only using Square but that is not encouraged
    
 """
