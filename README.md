@@ -1,5 +1,4 @@
 # GraphingCalculator
-""" 
 The Graphing Calculator is primarily for graphing calculations.For instance, one thing you can do is solve for y for the slope-intercept form equation; not only will it solve for y but it will graph the line you've created as well. It is supposed to visually aid those who wish to understand math. I was going to continue the project further but there are so many fantastic graphing and formula sites already such as symbolab.
 Note:  A normal calculator is better for quick successive basic arithmetic, this is not.
 
@@ -19,14 +18,13 @@ Triginometry provides simple trig equations, this is a pretty lackluster class.
 Graph provides mainly algebraic formulas (aside from Integrals) and their paths.
 
 ## How to Use
-\n For those who don't know Jupyter you must run all the cells first in order (similar to Google Collab).
-\n In a new cell we'll use Areas as an example, and we'll find the area of a Square:
-  \nFirst we'll make an object from our class as well as define the parameters:
-    \narea = Areas(2, 4)
-   \nAnd now we have our object using 2 for our first input and 4 for our second input (which is useless for Square)
-   \nSo now we call the square function:
-    \narea.square()
-   \nAnd our answer is 4
-   \nYou can also set Areas second parameter to None if you're only using Square but that is not encouraged
-   
-"""
+<p> For those who don't know Jupyter you must run all the cells first in order (similar to Google Collab).<br />
+In a new cell we'll use Areas as an example, and we'll find the area of a Square:<br />
+  First we'll make an object from our class as well as define the parameters:<br />
+    area = Areas(2, 4)<br />
+   And now we have our object using 2 for our first input and 4 for our second input (which is useless for Square)<br />
+   So now we call the square function:<br />
+    area.square()<br />
+   And our answer is 4<br />
+   You can also set Areas second parameter to None if you're only using Square but that is not encouraged</p>
+
