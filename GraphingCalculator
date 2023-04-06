@@ -1,0 +1,289 @@
+import math
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.patches import Polygon
+from mpl_toolkits.mplot3d import Axes3D
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection, Line3DCollection
+
+def SquareArea(x):
+    plt.axes()
+    square = plt.Rectangle((0,0), x, x, fc='white', ec="blue")
+    plt.gca().add_patch(square)
+    plt.axis('scaled')
+    plt.show()
+    
+def RectangleArea(x, y):
+    plt.axes()
+    rectangle = plt.Rectangle((0,0), x, y, fc='white', ec="blue")
+    plt.gca().add_patch(rectangle)
+    plt.axis('scaled')
+    plt.show()
+    
+def EqualTriangleArea(x, y):
+    plt.axes()
+    equal_triangle = Polygon(((0, 0), (x / 2, y), (x, 0)), fc='white', ec="blue")
+    plt.gca().add_patch(equal_triangle)
+    plt.axis('scaled')
+    plt.show()
+    
+def RhombusArea(x, y):
+    plt.axes()
+    rhombus = Polygon(((x / 2, 0), (x, y / 2), (x / 2, y), (0, y / 2)), fc='white', ec="blue")
+    plt.gca().add_patch(rhombus)
+    plt.axis('scaled')
+    plt.show()
+    
+def CircleArea(x):
+    plt.axes()
+    circle = plt.Circle((0,0), x, fc='white', ec="blue")
+    plt.gca().add_patch(circle)
+    plt.axis('scaled')
+    plt.show()
+
+def CubeVolume(x):
+    alpha = 0.7
+    axes = [x, x, x]
+    data = np.ones(axes, dtype=bool)
+    fig = plt.figure()
+    colors = np.empty(axes + [4], dtype=np.float32)
+    colors[:] = [0, 0, 1, alpha]
+    ax = fig.add_subplot(111, projection = '3d')
+    ax.voxels(data, facecolors = colors)
+    
+def RhomboidVolume(x, y, z):
+    Z = np.array([[0, 0, 0],
+                  [x, 0, 0],
+                  [x, y, 0],
+                  [0, y, 0],
+                  [0, 0, z],
+                  [x, 0, z],
+                  [x, y, z],
+                  [0, y, z]])
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    r = [-1,1]
+    X, Y = np.meshgrid(r, r)
+    ax.scatter3D(Z[:, 0], Z[:, 1], Z[:, 2])
+    verts = [[Z[0],Z[1],Z[2],Z[3]],
+         [Z[4],Z[5],Z[6],Z[7]],
+         [Z[0],Z[1],Z[5],Z[4]],
+         [Z[2],Z[3],Z[7],Z[6]],
+         [Z[1],Z[2],Z[6],Z[5]],
+         [Z[4],Z[7],Z[3],Z[0]]]
+    ax.add_collection3d(Poly3DCollection(verts, facecolors='blue', linewidths=1, edgecolors='w', alpha=0.7))
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    plt.show()
+    
+def SphereVolume(x):
+    fig = plt.figure()
+    ax = fig.add_subplot(projection='3d')
+
+    u = np.linspace(0, 2 * np.pi, 100)
+    v = np.linspace(0, np.pi, 100)
+    a = x * np.outer(np.cos(u), np.sin(v))
+    b = x * np.outer(np.sin(u), np.sin(v))
+    c = x * np.outer(np.ones(np.size(u)), np.cos(v))
+
+    ax.plot_surface(a, b, c)
+    plt.show()
+
+def PythagoreanTriangle(x, y, z):
+    plt.axes()
+    equal_triangle = Polygon(((0, 0), (x / 2 , z), (x, y)), fc='white', ec="blue")
+    plt.gca().add_patch(equal_triangle)
+    plt.axis('scaled')
+    plt.show()
+    
+def SineWave(x):
+    time = np.arange(0, 10, x)
+    amplitude = np.sin(time)
+    plt.plot(time, amplitude)
+    plt.title('Sine wave')
+    plt.xlabel('Time')
+    plt.ylabel('Amplitude')
+    plt.grid(True, which = 'both')
+    plt.axhline(y = 0, color = 'k')
+    plt.show()
+    
+def CosineWave(x):
+    time = np.arange(0, 10, x)
+    amplitude = np.cos(time)
+    plt.plot(time, amplitude)
+    plt.title('Cosine wave')
+    plt.xlabel('Time')
+    plt.ylabel('Amplitude')
+    plt.grid(True, which = 'both')
+    plt.axhline(y = 0, color = 'k')
+    plt.show()
+    
+def TangentWave(x):
+    time = np.arange(0, 10, x)
+    amplitude = np.tan(time)
+    plt.plot(time, amplitude)
+    plt.title('Tangent wave')
+    plt.xlabel('Time')
+    plt.ylabel('Amplitude')
+    plt.grid(True, which = 'both')
+    plt.axhline(y = 0, color = 'k')
+    plt.show()
+
+def LineGraph(m, x, b):
+    m = np.array([m, m * 2, m * 3, m * 4])
+    y = m * x + b
+    plt.plot(m, y)
+    plt.show()
+    
+def QuadraticGraph(a, b, c, x):
+    slope = np.linspace(-x, x, 100)
+    y = a * slope**2 + b * slope + c
+    fig, ax = plt.subplots()
+    ax.plot(slope, y)
+    plt.show()
+
+def ParabolaGraph(a, b, c, x):
+    slope = np.linspace(-x, x, 100)
+    y = a * slope**2 + b * slope + c
+    fig, ax = plt.subplots()
+    ax.plot(slope, y)
+    plt.show()
+    
+def SlopeGraph(x, b):
+    slope = np.linspace(-x, x, 100)
+    y = b ** slope
+    fig, ax = plt.subplots()
+    ax.plot(slope, y)
+    plt.show()
+    
+def IntegralGraph(a, b, c, d, e, f, g):
+    a = np.linspace(0, 10)
+    y = (a - b) * (a - c) * (a - d) + e
+
+    fig, ax = plt.subplots()
+    ax.plot(a, y, 'r', linewidth=1)
+    ax.set_ylim(bottom=0)
+
+    ix = np.linspace(f, g)
+    iy = (ix - b) * (ix - c) * (ix - d) + e
+    verts = [(f, 0), *zip(ix, iy), (g, 0)]
+    poly = Polygon(verts, facecolor='0.9', edgecolor='0.5')
+    ax.add_patch(poly)
+
+    plt.show()
+
+class Arithmetic:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def Addition(self):
+            return self.x + self.y
+    def Subtraction(self):
+            return self.x - self.y
+    def Multiplication(self):
+            return self.x * self.y
+    def Division(self):
+        if self.y == 0:
+            return "Error: You cannot divide by 0!"
+        else:
+            return self.x / self.y
+    def Exponent(self):
+            return self.x ** self.y
+    def Squareroot(self):
+        if self.x < 0:
+            return "Error: You cannot get the square root of a negative number!"
+        else:
+            return math.sqrt(self.x)
+
+class Areas:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+    def Square(self):
+        x = self.a ** 2
+        return x, SquareArea(self.a)
+    def Rectangle(self):
+        x , y = self.a, self.b
+        return (x * y), RectangleArea(x, y)
+    def EqualTriangle(self):
+        x , y = self.a, self.b
+        return (x * y / 2), EqualTriangleArea(x, y)
+    def Rhombus(self):
+        x , y = self.a, self.b
+        return ((x * y) / 2), RhombusArea(x, y)
+    def Circle(self):
+        radius = (self.a ** 2) * math.pi
+        return radius, CircleArea(radius)
+        
+
+class Volumes:
+    def __init__(self, a, b, c):
+        self.a = a
+        self.b = b
+        self.c = c
+    def Cube(self):
+        x = self.a ** 3
+        return x, CubeVolume(self.a)
+    def Rhomboid(self):
+        x, y, z = self.a, self.b, self.c
+        return x * y * z, RhomboidVolume(x, y, z)
+    def Sphere(self):
+        x = self.a
+        return (self.a ** 3 * math.pi) * (4 / 3), SphereVolume(x)
+
+class Triginometry:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+    def Pythagorean(self):
+        x, y = self.a, self.b
+        z = x ** 2 + y ** 2
+        return math.sqrt(z), PythagoreanTriangle(x, y, math.sqrt(z))
+    def Sine(self):
+        x, y = self.a, self.b
+        z = np.sin(x / y)
+        return z, SineWave(z)
+    def Cosine(self):
+        x, y = self.a, self.b
+        z = np.cos(x / y)
+        return z, CosineWave(z)
+    def Tangent(self):
+        x, y = self.a, self.b
+        z = np.tan(x / y)
+        return z, TangentWave(z)
+
+class Graph:
+    def __init__(self, a, b, c, d, e, f, g):
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+        self.e = e
+        self.f = f
+        self.g = g
+    def Line(self):
+        m, x, b = self.a, self.b, self.c
+        return m * x + b, LineGraph(m, x, b)
+    def Quadratic(self):
+        try:
+            a, b, c = self.a, self.b, self.c
+            positivex = -(a) + math.sqrt(a ** 2 - 4 * b * c) / 2 * b
+            negativex = -(a) - math.sqrt(a ** 2 - 4 * b * c) / 2 * b
+            return positivex, negativex, QuadraticGraph(a, b, c, positivex)
+        except:
+            return "Error: A negative number cannot be square rooted! Enter different values"
+    def Parabola(self):
+        a, x, h, k = self.a, self.b, self.c, self.d
+        y = a * (x - h) ** 2 + k
+        return y, ParabolaGraph(a, h, k, x)
+    def Slope(self):
+        a, x = self.a, self.b
+        y = a ** x
+        return y, SlopeGraph(a, x)
+    def Integral(self):
+        a, b, c, d, e, f, g = self.a, self.b, self.c, self.d, self.e, self.f, self.g
+        formula = (a - b) * (a - c) * (a - d) + e
+        return formula, IntegralGraph(a, b, c, d, e, f, g)
+        
+ 
